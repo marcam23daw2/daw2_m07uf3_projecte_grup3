@@ -18,8 +18,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'role',
         'email',
         'password',
+        'darrera_hora_dentrada',
+        'darrera_hora_desortida',
     ];
 
     /**
@@ -42,6 +45,8 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'darrera_hora_dentrada' => 'datetime',
+            'darrera_hora_desortida' => 'datetime',
         ];
     }
 }
