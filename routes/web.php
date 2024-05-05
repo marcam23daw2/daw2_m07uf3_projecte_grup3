@@ -47,7 +47,15 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('autos', AUTOSController::class);  
     Route::get('/autos/{matricula_auto}/pdf', [AUTOSController::class, 'exportPdf'])->name('autos.pdf');
 
+    Route::get('/dashboard_lloga', function () {
+        return view('dashboard_lloga'); 
+    })->name('dashboard_lloga');
 
+    Route::resource('lloga', LLOGAController::class);  
+    Route::get('/lloga/{dni_client}/{matricula_auto}/edit', [LLOGAController::class, 'edit'])->name('lloga.edit');
+    Route::patch('/lloga/{dni_client}/{matricula_auto}', [LLOGAController::class, 'update'])->name('lloga.update');
+    Route::delete('/lloga/{dni_client}/{matricula_auto}', [LLOGAController::class, 'destroy'])->name('lloga.destroy');
+    Route::get('/lloga/{dni_client}/{matricula_auto}/pdf', [LLOGAController::class, 'exportPdf'])->name('lloga.pdf');
 });
 
 

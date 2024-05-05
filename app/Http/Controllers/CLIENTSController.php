@@ -99,7 +99,7 @@ class CLIENTSController extends Controller
     public function exportPdf($dni_client)
     {
         $client = CLIENTS::findOrFail($dni_client);
-        $pdf = PDF::loadView('clients_pdf', compact('client'));
+        $pdf = PDF::loadView('pdf/clients_pdf', compact('client'));
         return $pdf->download('clients_data.pdf');
     }
 

@@ -97,7 +97,7 @@ class AUTOSController extends Controller
     public function exportPdf($matricula_auto)
     {
         $auto = AUTOS::findOrFail($matricula_auto);
-        $pdf = PDF::loadView('autos_pdf', compact('auto'));
+        $pdf = PDF::loadView('pdf/autos_pdf', compact('auto'));
         return $pdf->download('autos_data.pdf');
     }
 }

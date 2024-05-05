@@ -117,7 +117,7 @@ class USUARISController extends Controller
 
     public function exportPdf(User $user)
     {
-        $pdf = PDF::loadView('users_pdf', compact('user'));
+        $pdf = PDF::loadView('pdf/users_pdf', compact('user'));
         return $pdf->download('user_data.pdf');
     }
 }
