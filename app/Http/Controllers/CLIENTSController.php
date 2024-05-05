@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\CLIENTS;
 use Illuminate\Http\Request;
 
@@ -94,5 +95,13 @@ class CLIENTSController extends Controller
         $client->delete();
         return view('dashboard_clients');
     }
+
+    public function exportPdf($dni_client)
+    {
+        $client = CLIENTS::findOrFail($dni_client);
+        $pdf = PDF::loadView('clients_pdf', compact('client'));
+        return $pdf->download('clients_data.pdf');
+    }
+
 
 }

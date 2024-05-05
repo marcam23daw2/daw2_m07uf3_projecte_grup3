@@ -42,6 +42,8 @@
                         <button class="btn btn-danger btn-sm" type="submit">Esborra</button>
                 </form>
                 <a href="{{ route('clients.edit', $client->dni_client)}}" class="btn btn-primary btn-sm">Edita</a>
+                <a href="{{ route('clients.pdf', $client->dni_client)}}" class="btn btn-secondary btn-sm">Descarregar PDF</a>
+
             </td>
         </tr>
         @endforeach

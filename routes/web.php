@@ -5,9 +5,12 @@ use Illuminate\Support\Facades\Route;
 use App\Models\AUTOS;
 use App\Models\CLIENTS;
 use App\Models\LLOGA;
+use App\Models\USUARIS;
+use App\Models\user;
 use App\Http\Controllers\AUTOSController;
 use App\Http\Controllers\CLIENTSController;
 use App\Http\Controllers\LLOGAController;
+use App\Http\Controllers\USUARISController;
 
 
 Route::get('/', function () {
@@ -23,11 +26,28 @@ Route::group(['middleware' => 'auth'], function(){
         return view('dashboard_admin'); 
     })->name('dashboard_admin');
 
+    Route::resource('treballadors', USUARISController::class);
+
+    Route::delete('/users/{user}', [USUARISController::class, 'destroy'])->name('users.destroy');
+    Route::get('/users/{user}/edit', [USUARISController::class, 'edit'])->name('users.edit');
+    Route::patch('/users/{user}', [USUARISController::class, 'update'])->name('users.update');
+    Route::get('users/pdf/{user}', [USUARISController::class, 'exportPdf'])->name('users.pdf');
+
     Route::get('/dashboard_clients', function () {
         return view('dashboard_clients'); 
     })->name('dashboard_clients');
 
-    Route::resource('clients', CLIENTSController::class);
+    Route::resource('clients', CLIENTSController::class);  
+    Route::get('/clients/{dni_client}/pdf', [CLIENTSController::class, 'exportPdf'])->name('clients.pdf');
+
+    Route::get('/dashboard_autos', function () {
+        return view('dashboard_autos'); 
+    })->name('dashboard_autos');
+
+    Route::resource('autos', AUTOSController::class);  
+    Route::get('/autos/{matricula_auto}/pdf', [AUTOSController::class, 'exportPdf'])->name('autos.pdf');
+
+
 });
 
 
