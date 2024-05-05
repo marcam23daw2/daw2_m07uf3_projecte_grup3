@@ -5,13 +5,6 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            position: relative;
-        }
-        .logo {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 50px; 
         }
         table {
             width: 100%;
@@ -28,7 +21,6 @@
     </style>
 </head>
 <body>
-    <img src="{{ asset('images/logo.jpg') }}" alt="Logo" class="logo">
     <h1>Dades del auto</h1>
     <table>
         <tbody>
