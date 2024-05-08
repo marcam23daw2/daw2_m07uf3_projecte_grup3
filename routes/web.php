@@ -12,6 +12,9 @@ use App\Http\Controllers\CLIENTSController;
 use App\Http\Controllers\LLOGAController;
 use App\Http\Controllers\USUARISController;
 
+if (env('APP_ENV') !== 'local') {
+    URL::forceScheme('https');
+}
 
 Route::get('/', function () {
     return view('inici');
